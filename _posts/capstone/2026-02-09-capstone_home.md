@@ -89,6 +89,7 @@ sticky_rank: 1
    </a>
    <select id="year-select" class="ml-4 px-2 py-1 rounded border border-gray-300 bg-white text-sm">
      <option value="2025-2026" selected>2025/2026</option>
+     <option value="2026-2027">2026/2027</option>
    </select>
  </div>
  <div class="flex flex-col items-start sm:items-end">
@@ -114,8 +115,10 @@ var _capstoneData = {};
 document.addEventListener('DOMContentLoaded', function(){
   const cards = Array.from(document.querySelectorAll('#capstone-grid > div'));
   const searchInput = document.getElementById('project-search');
+  const yearSelect = document.getElementById('year-select');
   const status = document.getElementById('search-status');
   let currentType = 'all';
+  let currentYear = yearSelect ? yearSelect.value : '2025-2026';
   let currentQuery = '';
 
   const linkMap = {
@@ -168,6 +171,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function normalize(text){ return text.toLowerCase().trim(); }
   function matchesType(card){ return currentType === 'all' || card.classList.contains(currentType); }
+  function matchesYear(card){
+    const cardYear = card.dataset.year || '2025-2026';
+    return currentYear === 'all' || cardYear === currentYear;
+  }
   function matchesSearch(card){
     const text = normalize(card.textContent);
     return !currentQuery || text.includes(currentQuery);
@@ -190,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function applyFilters(){
     let count = 0;
     cards.forEach(card=>{
-      const visible = matchesType(card) && matchesSearch(card);
+      const visible = matchesType(card) && matchesYear(card) && matchesSearch(card);
       card.style.display = visible ? '' : 'none';
       if(visible) count++;
     });
@@ -203,6 +210,10 @@ document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('show-all')?.addEventListener('click', ()=> setTypeFilter('all'));
   document.getElementById('show-csa')?.addEventListener('click', ()=> setTypeFilter('CSA'));
   document.getElementById('show-csp')?.addEventListener('click', ()=> setTypeFilter('CSP'));
+  yearSelect?.addEventListener('change', event=>{
+    currentYear = event.target.value;
+    applyFilters();
+  });
   function closeAllPopups(){
     document.querySelectorAll('.capstone-popup').forEach(el=>el.classList.add('hidden'));
   }
@@ -688,6 +699,18 @@ Below are the capstone infographic pages created by student groups. Click an ima
            <h3 class="text-lg font-semibold"><a href="{% post_url 2026-03-08-Flask-and-Furious-capstone %}">Safe Passage Heals - Media Management Tools and Interactive Recovery Simulation</a></h3>
            <p class="text-sm text-gray-700">A system of interactive web tools for Safe Passage Heals — centralizing community events through dynamic media management and an interactive simulation of the domestic violence recovery process.</p>
            <p class="text-xs text-gray-500 mt-2">Team: Ruchika Kench, Akshara Shankar, Avantika Chittari</p>
+       </div>
+   </div>
+
+   <!-- SRFSC Website Redesign Examples (CSP) -->
+   <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSP" data-year="2026-2027">
+       <a href="{% post_url capstone/2026-09-04-srfsc-redesign-examples %}">
+           <div class="w-28 h-28 flex items-center justify-center rounded text-xl font-black text-white shadow-sm" style="background: linear-gradient(135deg, #173b2f, #d8572a);">SRFSC</div>
+       </a>
+       <div>
+           <h3 class="text-lg font-semibold"><a href="{% post_url capstone/2026-09-04-srfsc-redesign-examples %}">SRFSC Website Redesign Examples</a></h3>
+           <p class="text-sm text-gray-700">Visual mockup examples showing how the Scripps Ranch Fire Safe Council website could be redesigned for clarity, urgency, and action.</p>
+           <p class="text-xs text-gray-500 mt-2">Team: Krish Kelageri, Jasan Boprai, Shourya Patel</p>
        </div>
    </div>
 
