@@ -362,11 +362,98 @@ courses: { csp: {week: 25} }
     display: none !important;
   }
 
+  .srfsc-feature-wrap {
+    max-width: 1180px;
+    margin: 2.5rem auto 0;
+    padding: 0 2rem;
+  }
+
+  .srfsc-feature-header {
+    margin-bottom: 1rem;
+  }
+
+  .srfsc-feature-header h3 {
+    margin: 0.4rem 0 0;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    letter-spacing: -0.04em;
+    color: #173b2f;
+  }
+
+  .srfsc-eyebrow {
+    display: inline-block;
+    padding: 0.38rem 0.78rem;
+    border-radius: 999px;
+    background: #edf6ec;
+    color: #173b2f;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .srfsc-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .srfsc-feature-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f7faf7 100%);
+    border: 1px solid rgba(17, 38, 27, 0.08);
+    border-radius: 20px;
+    padding: 1.25rem;
+    box-shadow: 0 12px 24px rgba(19, 41, 18, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .srfsc-feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 28px rgba(19, 41, 18, 0.08);
+  }
+
+  .srfsc-feature-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: #173b2f;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.9rem;
+  }
+
+  .srfsc-feature-icon {
+    font-size: 1.9rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .srfsc-feature-card h4 {
+    margin: 0 0 0.6rem;
+    font-size: 1.1rem;
+    color: #112420;
+  }
+
+  .srfsc-feature-card p {
+    margin: 0;
+    line-height: 1.6;
+    color: #3b4d47;
+  }
+
+  .srfsc-feature-card.accent-1 { border-top: 4px solid #d8572a; }
+  .srfsc-feature-card.accent-2 { border-top: 4px solid #efb63b; }
+  .srfsc-feature-card.accent-3 { border-top: 4px solid #6a8d6d; }
+  .srfsc-feature-card.accent-4 { border-top: 4px solid #3e7d5d; }
+
   @media (max-width: 900px) {
     .srfsc-hero-inner,
     .srfsc-grid-3,
     .srfsc-news-grid,
-    .srfsc-split {
+    .srfsc-split,
+    .srfsc-feature-grid {
       grid-template-columns: 1fr;
     }
 
@@ -379,7 +466,8 @@ courses: { csp: {week: 25} }
     }
 
     .srfsc-hero,
-    .srfsc-section {
+    .srfsc-section,
+    .srfsc-feature-wrap {
       padding-left: 1rem;
       padding-right: 1rem;
     }
@@ -390,12 +478,12 @@ courses: { csp: {week: 25} }
   <div class="srfsc-topbar">
     <div class="srfsc-brand">SRFSC</div>
     <nav class="srfsc-nav">
-      <a href="{{ '/srfsc-about' | relative_url }}">About</a>
-      <a href="{{ '/news' | relative_url }}">News</a>
-      <a href="{{ '/volunteer' | relative_url }}">Volunteer</a>
-      <a href="{{ '/donate' | relative_url }}">Donate</a>
+      <a href="{{ site.baseurl }}/srfsc-about">About</a>
+      <a href="{{ site.baseurl }}/news">News</a>
+      <a href="{{ site.baseurl }}/volunteer">Volunteer</a>
+      <a href="{{ site.baseurl }}/donate">Donate</a>
     </nav>
-    <a class="srfsc-btn" href="{{ '/volunteer' | relative_url }}">Join Us</a>
+    <a class="srfsc-btn" href="{{ site.baseurl }}/volunteer">Join Us</a>
   </div>
 
   <div class="srfsc-hero">
@@ -408,8 +496,8 @@ courses: { csp: {week: 25} }
           and keep our community prepared year-round.
         </p>
         <div class="srfsc-cta-row">
-          <a class="srfsc-btn" href="{{ '/volunteer' | relative_url }}">Volunteer</a>
-          <a class="srfsc-btn secondary" href="{{ '/donate' | relative_url }}">Donate</a>
+          <a class="srfsc-btn" href="{{ site.baseurl }}/volunteer">Volunteer</a>
+          <a class="srfsc-btn secondary" href="{{ site.baseurl }}/donate">Donate</a>
         </div>
       </div>
 
@@ -502,6 +590,56 @@ courses: { csp: {week: 25} }
   <div class="srfsc-search">
     <input id="srfscSearch" type="text" placeholder="Search programs, news, volunteer, or resources..." aria-label="Search SRFSC content" />
   </div>
+
+  <div class="srfsc-feature-wrap">
+    <div class="srfsc-feature-header">
+      <h3>Redesign features breakdown</h3>
+    </div>
+
+    <div class="srfsc-feature-grid">
+      <div class="srfsc-feature-card" data-search="cleaner hero section emergency message">
+        <div class="srfsc-feature-number">01</div>
+        <div class="srfsc-feature-icon">🌟</div>
+        <h4>Cleaner hero section</h4>
+        <p>Streamlined design with a direct emergency message for immediate impact.</p>
+      </div>
+
+      <div class="srfsc-feature-card" data-search="strong call-to-action buttons volunteering donating">
+        <div class="srfsc-feature-number">02</div>
+        <div class="srfsc-feature-icon">👉</div>
+        <h4>Strong call-to-action buttons</h4>
+        <p>Prominent buttons for volunteering and donating to increase engagement.</p>
+      </div>
+
+      <div class="srfsc-feature-card" data-search="obvious program grouping homepage">
+        <div class="srfsc-feature-number">03</div>
+        <div class="srfsc-feature-icon">📋</div>
+        <h4>Obvious program grouping</h4>
+        <p>Clearer organization of programs instead of a crowded homepage.</p>
+      </div>
+
+      <div class="srfsc-feature-card" data-search="community impact messaging">
+        <div class="srfsc-feature-number">04</div>
+        <div class="srfsc-feature-icon">📣</div>
+        <h4>Community impact messaging</h4>
+        <p>Emphasizes the difference we make together, right at the forefront.</p>
+      </div>
+
+      <div class="srfsc-feature-card" data-search="better use of cards content blocks">
+        <div class="srfsc-feature-number">05</div>
+        <div class="srfsc-feature-icon">🗂️</div>
+        <h4>Better use of cards and content blocks</h4>
+        <p>Organizes information effectively, making it easier to navigate.</p>
+      </div>
+
+      <div class="srfsc-feature-card" data-search="polished trustworthy nonprofit look">
+        <div class="srfsc-feature-number">06</div>
+        <div class="srfsc-feature-icon">🔒</div>
+        <h4>A more polished and trustworthy look</h4>
+        <p>Professional design that enhances credibility and encourages action.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -509,7 +647,7 @@ courses: { csp: {week: 25} }
   if (searchInput) {
     searchInput.addEventListener('input', function () {
       const value = this.value.toLowerCase().trim();
-      const items = document.querySelectorAll('.srfsc-card, .srfsc-panel, .srfsc-alert, .srfsc-news-item');
+      const items = document.querySelectorAll('.srfsc-card, .srfsc-panel, .srfsc-alert, .srfsc-news-item, .srfsc-feature-card');
 
       items.forEach((item) => {
         const text = (item.dataset.search || item.textContent || '').toLowerCase();
