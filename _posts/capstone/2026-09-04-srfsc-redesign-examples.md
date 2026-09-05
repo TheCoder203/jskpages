@@ -584,7 +584,7 @@ courses: { csp: {week: 25} }
 
   <div class="srfsc-callout">
     <h3>Every firebreak starts with one neighbor showing up.</h3>
-    <a class="srfsc-btn" href="{{ '/volunteer' | relative_url }}">Get involved</a>
+    <a class="srfsc-btn" href="{{ site.baseurl }}/volunteer">Get involved</a>
   </div>
 
   <div class="srfsc-search">
