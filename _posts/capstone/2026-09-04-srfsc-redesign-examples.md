@@ -472,6 +472,147 @@ courses: { csp: {week: 25} }
       padding-right: 1rem;
     }
   }
+
+  .srfsc-pitch {
+    max-width: 1180px;
+    margin: 2.5rem auto 0;
+    padding: 0 2rem 2rem;
+    font-family: Arial, sans-serif;
+  }
+
+  .srfsc-pitch-hero {
+    background: linear-gradient(135deg, #173b2f 0%, #214b3c 100%);
+    border-radius: 24px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(239, 182, 59, 0.25);
+    box-shadow: 0 18px 35px rgba(17, 38, 27, 0.12);
+  }
+
+  .srfsc-pitch-kicker {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #e9f3d7;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 999px;
+    padding: 0.45rem 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .srfsc-pitch-hero h2 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    color: #f0c767;
+  }
+
+  .srfsc-pitch-hero p {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.82);
+    font-size: 1rem;
+  }
+
+  .srfsc-pitch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .srfsc-pitch-card {
+    background: #f8faf7;
+    border: 1px solid rgba(17, 38, 27, 0.08);
+    border-radius: 18px;
+    padding: 1.25rem;
+    box-shadow: 0 12px 24px rgba(19, 41, 18, 0.06);
+  }
+
+  .srfsc-pitch-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d8572a, #efb63b);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.85rem;
+  }
+
+  .srfsc-pitch-card h3 {
+    margin: 0 0 0.7rem;
+    font-size: 1.2rem;
+    color: #112420;
+  }
+
+  .srfsc-pitch-card p {
+    margin: 0;
+    line-height: 1.7;
+    color: #3c4b42;
+  }
+
+  .srfsc-before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .srfsc-pitch-panel {
+    border-radius: 18px;
+    padding: 1.2rem 1.1rem;
+    border: 1px solid rgba(17, 38, 27, 0.08);
+  }
+
+  .srfsc-pitch-panel.before {
+    background: rgba(216, 87, 42, 0.06);
+    border-color: rgba(216, 87, 42, 0.2);
+  }
+
+  .srfsc-pitch-panel.after {
+    background: rgba(106, 141, 109, 0.06);
+    border-color: rgba(106, 141, 109, 0.2);
+  }
+
+  .srfsc-panel-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+  }
+
+  .srfsc-pitch-panel.before .srfsc-panel-label {
+    color: #bf4c23;
+  }
+
+  .srfsc-pitch-panel.after .srfsc-panel-label {
+    color: #2f6f4f;
+  }
+
+  .srfsc-pitch-panel ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: #21342d;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 900px) {
+    .srfsc-pitch-grid,
+    .srfsc-before-after {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 
 <div class="srfsc-demo">
@@ -642,6 +783,54 @@ courses: { csp: {week: 25} }
   </div>
 </div>
 
+<div class="srfsc-pitch">
+  <div class="srfsc-pitch-hero">
+    <div class="srfsc-pitch-kicker">Redesign goals</div>
+    <h2>Make the mission clear in a few seconds.</h2>
+    <p>Visitors should understand the risk, the purpose, and the next action without digging through clutter. This redesign puts urgency and action front and center.</p>
+  </div>
+
+  <div class="srfsc-pitch-grid">
+    <div class="srfsc-pitch-card">
+      <div class="srfsc-pitch-number">1</div>
+      <h3>Mission first</h3>
+      <p>The hero message tells neighbors exactly what SRFSC does and why it matters right away.</p>
+    </div>
+
+    <div class="srfsc-pitch-card">
+      <div class="srfsc-pitch-number">2</div>
+      <h3>Clear action path</h3>
+      <p>Volunteer, donate, and learn are all visible without forcing people to hunt for information.</p>
+    </div>
+
+    <div class="srfsc-pitch-card">
+      <div class="srfsc-pitch-number">3</div>
+      <h3>Trust and clarity</h3>
+      <p>The layout feels more professional, local, and reliable while still staying community-driven.</p>
+    </div>
+  </div>
+
+  <div class="srfsc-before-after">
+    <div class="srfsc-pitch-panel before">
+      <div class="srfsc-panel-label">Before</div>
+      <ul>
+        <li>Mission and updates compete for attention.</li>
+        <li>Users are unsure what to do next.</li>
+        <li>Important actions are spread across the page.</li>
+      </ul>
+    </div>
+
+    <div class="srfsc-pitch-panel after">
+      <div class="srfsc-panel-label">After</div>
+      <ul>
+        <li>Cleaner hero and stronger local urgency.</li>
+        <li>Better grouping for programs, updates, and support.</li>
+        <li>Clear volunteer / donation flow for action.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <script>
   const searchInput = document.getElementById('srfscSearch');
   if (searchInput) {
@@ -679,3 +868,75 @@ This mockup is designed to implement the key concepts from the ideation work:
 6. Make the site feel community-driven, reliable, and action-focused
 
 This is a strong starting point for a final site redesign because it keeps the emotional mission while making the structure much easier to navigate.
+
+<div class="srfsc-pitch">
+  <div class="srfsc-pitch-hero">
+    <div class="srfsc-pitch-kicker">Redesign Summary</div>
+    <h2>Key improvements at a glance</h2>
+    <p>These focused changes can significantly enhance the website's effectiveness in communication and engagement.</p>
+  </div>
+
+  <div class="srfsc-pitch-grid">
+    <div class="srfsc-pitch-card" data-search="cleaner hero section emergency message">
+      <div class="srfsc-pitch-number">01</div>
+      <h3>Cleaner hero section</h3>
+      <p>Streamlined design with a direct emergency message for immediate impact.</p>
+    </div>
+
+    <div class="srfsc-pitch-card" data-search="strong call-to-action buttons volunteering donating">
+      <div class="srfsc-pitch-number">02</div>
+      <h3>Strong call-to-action buttons</h3>
+      <p>Prominent buttons for volunteering and donating to increase engagement.</p>
+    </div>
+
+    <div class="srfsc-pitch-card" data-search="obvious program grouping homepage">
+      <div class="srfsc-pitch-number">03</div>
+      <h3>Obvious program grouping</h3>
+      <p>Clearer organization of programs instead of a crowded homepage.</p>
+    </div>
+
+    <div class="srfsc-pitch-card" data-search="community impact messaging">
+      <div class="srfsc-pitch-number">04</div>
+      <h3>Community impact messaging</h3>
+      <p>Emphasizes the difference we make together, right at the forefront.</p>
+    </div>
+
+    <div class="srfsc-pitch-card" data-search="better use of cards content blocks">
+      <div class="srfsc-pitch-number">05</div>
+      <h3>Better use of cards and content blocks</h3>
+      <p>Organizes information effectively, making it easier to navigate.</p>
+    </div>
+
+    <div class="srfsc-pitch-card" data-search="polished trustworthy nonprofit look">
+      <div class="srfsc-pitch-number">06</div>
+      <h3>A more polished and trustworthy look</h3>
+      <p>Professional design that enhances credibility and encourages action.</p>
+    </div>
+  </div>
+
+  <div class="srfsc-before-after">
+    <div class="srfsc-pitch-panel before">
+      <div class="srfsc-panel-label">Before</div>
+      <ul>
+        <li>Overly complex hero section</li>
+        <li>Weak call-to-action visibility</li>
+        <li>Programs not clearly grouped</li>
+        <li>Impact of donations not highlighted</li>
+        <li>Information densely packed</li>
+        <li>Lack of professional polish</li>
+      </ul>
+    </div>
+
+    <div class="srfsc-pitch-panel after">
+      <div class="srfsc-panel-label">After</div>
+      <ul>
+        <li>Cleaner, focused hero with emergency info</li>
+        <li>Strong, clear buttons for action</li>
+        <li>Logical grouping of programs and services</li>
+        <li>Community impact and urgency upfront</li>
+        <li>Well-organized, digestible information</li>
+        <li>Polished, trustworthy nonprofit appearance</li>
+      </ul>
+    </div>
+  </div>
+</div>
