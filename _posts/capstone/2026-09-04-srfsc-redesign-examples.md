@@ -37,6 +37,18 @@ courses: { csp: {week: 25} }
 
   .srfsc-demo * { box-sizing: border-box; }
 
+  .post-content,
+  .post-content p,
+  .post-content li,
+  .post-content h2,
+  .post-content h3,
+  .post-content h4,
+  .post-content strong,
+  .post-content a,
+  .post-content span {
+    color: #111111 !important;
+  }
+
   .srfsc-topbar {
     display: flex;
     align-items: center;
