@@ -81,6 +81,7 @@ sticky_rank: 1
    <button id="show-all" class="px-3 py-1 bg-gray-200 rounded mr-2">All</button>
    <button id="show-csa" class="px-3 py-1 bg-blue-200 rounded mr-2">CSA</button>
    <button id="show-csp" class="px-3 py-1 bg-blue-200 rounded mr-2">CSP</button>
+  <button id="show-csh" class="px-3 py-1 bg-blue-200 rounded mr-2">CSH</button>
    <a href="{% post_url 2026-06-01-README-capstone %}" class="inline-flex items-center px-3 py-1 bg-white border border-gray-300 rounded text-sm text-slate-900 hover:bg-gray-100" title="Open Capstone Home Documentation">
      <span class="mr-2">📄</span>README
    </a>
@@ -88,8 +89,8 @@ sticky_rank: 1
      <span class="mr-2">🎮</span>Games Directory
    </a>
    <select id="year-select" class="ml-4 px-2 py-1 rounded border border-gray-300 bg-white text-sm">
-     <option value="2025-2026" selected>2025/2026</option>
-     <option value="2026-2027">2026/2027</option>
+     <option value="2026-2027" selected>2026/2027</option>
+     <option value="2025-2026">2025/2026</option>
    </select>
  </div>
  <div class="flex flex-col items-start sm:items-end">
@@ -115,11 +116,11 @@ var _capstoneData = {};
 document.addEventListener('DOMContentLoaded', function(){
   const cards = Array.from(document.querySelectorAll('#capstone-grid > div'));
   const searchInput = document.getElementById('project-search');
-  const yearSelect = document.getElementById('year-select');
   const status = document.getElementById('search-status');
   let currentType = 'all';
-  let currentYear = yearSelect ? yearSelect.value : '2025-2026';
   let currentQuery = '';
+  const yearSelect = document.getElementById('year-select');
+  let currentYear = yearSelect ? yearSelect.value : '';
 
   const linkMap = {
     "Oasis": {
@@ -171,10 +172,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function normalize(text){ return text.toLowerCase().trim(); }
   function matchesType(card){ return currentType === 'all' || card.classList.contains(currentType); }
-  function matchesYear(card){
-    const cardYear = card.dataset.year || '2025-2026';
-    return currentYear === 'all' || cardYear === currentYear;
-  }
+  function matchesYear(card){ return !currentYear || (card.dataset.year || '2025-2026') === currentYear; }
   function matchesSearch(card){
     const text = normalize(card.textContent);
     return !currentQuery || text.includes(currentQuery);
@@ -197,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function applyFilters(){
     let count = 0;
     cards.forEach(card=>{
-      const visible = matchesType(card) && matchesYear(card) && matchesSearch(card);
+      const visible = matchesType(card) && matchesSearch(card) && matchesYear(card);
       card.style.display = visible ? '' : 'none';
       if(visible) count++;
     });
@@ -210,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('show-all')?.addEventListener('click', ()=> setTypeFilter('all'));
   document.getElementById('show-csa')?.addEventListener('click', ()=> setTypeFilter('CSA'));
   document.getElementById('show-csp')?.addEventListener('click', ()=> setTypeFilter('CSP'));
+  document.getElementById('show-csh')?.addEventListener('click', ()=> setTypeFilter('CSH'));
   yearSelect?.addEventListener('change', event=>{
     currentYear = event.target.value;
     applyFilters();
@@ -317,6 +316,45 @@ Below are the capstone infographic pages created by student groups. Click an ima
 <div id="capstone-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 my-6">
 
 
+   <!-- UESL Accessible Game Maker 2.0 (CSP, 2026/2027) -->
+   <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSP" data-year="2026-2027" data-page-url="{{ '/capstone/uesl-game-maker/' | relative_url }}" data-frontend-url="https://github.com/RazorCrest00/uesl-accessible-game-maker">
+       <a href="{{ '/capstone/uesl-game-maker/' | relative_url }}">
+           <img src="{{ '/images/capstone/uesl_foundation.svg' | relative_url }}" alt="UESL Foundation logo — shield with game controller" class="w-28 h-28 object-cover rounded" />
+       </a>
+       <div>
+           <h3 class="text-lg font-semibold"><a href="{{ '/capstone/uesl-game-maker/' | relative_url }}">UESL Accessible Game Maker 2.0</a></h3>
+           <p class="text-sm text-gray-700">An accessible game creation platform guiding participants through templates, live themes, and IDD-focused comfort profiles before keyboard-friendly playtesting. Versioned state validates choices, restores browser drafts, and exports engine-ready configurations for UESL’s advanced editor and GameEnginev1.2.</p>
+           <p class="text-xs text-gray-500 mt-2">Team: Ishan, Rohan, Adhvay</p>
+       </div>
+   </div>
+
+
+   <!-- RFID + Camera-Correlated Classroom Presence -->
+   <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSH" data-year="2026-2027">
+     <a href="{% post_url capstone/2026-08-28-rfid-presence-capstone %}">
+       <div class="w-28 h-28 flex items-center justify-center bg-blue-900 text-white text-2xl font-bold rounded" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">RFID</div>
+     </a>
+     <div>
+       <h3 class="text-lg font-semibold"><a href="{% post_url capstone/2026-08-28-rfid-presence-capstone %}">RFID + Camera-Correlated Classroom Presence</a></h3>
+       <p class="text-sm text-gray-700">A low-cost Raspberry Pi UHF RFID system that tracks device presence at the doorway and correlates it with an existing face-scanning camera system to determine true student presence, period by period.</p>
+       <p class="text-xs text-gray-500 mt-2">Team: Ruta Sirdeshmukh, Vibha Mandayam, Kush Shah</p>
+     </div>
+   </div>
+
+
+     <!-- Jarvis Classroom Object Detection -->
+     <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSH" data-year="{{ site.data.jarvis_infograph.Year }}" data-frontend-url="{{ site.data.jarvis_infograph.Repo }}">
+       <a href="{% post_url capstone/2026-09-01-jarvis-capstone %}">
+         <img src="{{ '/images/' | append: site.data.jarvis_infograph.Image | relative_url }}" alt="{{ site.data.jarvis_infograph.Title }}" class="w-28 h-28 object-cover rounded" />
+       </a>
+       <div>
+         <h3 class="text-lg font-semibold"><a href="{% post_url capstone/2026-09-01-jarvis-capstone %}">{{ site.data.jarvis_infograph.Title }}</a></h3>
+         <p class="text-sm text-gray-700">{{ site.data.jarvis_infograph.Description }}</p>
+         <p class="text-xs text-gray-500 mt-2">Team: {{ site.data.jarvis_infograph.Team | join: ", " }}</p>
+       </div>
+     </div>
+
+
    <!-- Big Six & Code Hub -->
    <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSA">
        <a href="{% post_url capstone/2026-03-04-big6-capstone %}">
@@ -352,6 +390,31 @@ Below are the capstone infographic pages created by student groups. Click an ima
            <h3 class="text-lg font-semibold"><a href="{% post_url capstone/2026-02-06-educators-capstone %}">Educators</a></h3>
            <p class="text-sm text-gray-700">An educational platform that helps CS newcomers build mental models for temporal problem-solving in software development.</p>
            <p class="text-xs text-gray-500 mt-2">Team: Nithika Vivek, Eshika Pallpotu, Saanvi Dogra</p>
+       </div>
+   </div>
+
+
+     <!-- OCS Intelligence LLM -->
+     <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSH" data-year="2026-2027">
+       <a href="{% post_url capstone/2026-08-31-ocs-intelligence-capstone %}">
+         <img src="/images/capstone/ocs-intelligence.png" alt="OCS Intelligence LLM - Shared AI Infrastructure for Students" class="w-28 h-28 object-cover rounded" />
+       </a>
+       <div>
+         <h3 class="text-lg font-semibold"><a href="{% post_url capstone/2026-08-31-ocs-intelligence-capstone %}">OCS Intelligence LLM</a></h3>
+         <p class="text-sm text-gray-700">A generously donated 8× GTX 1070 rack becomes a shared open-weight LLM for OCS: live access from student harnesses, every student in mind, electricity as the only ongoing cost.</p>
+         <p class="text-xs text-gray-500 mt-2">Team: Nikhil Maturi, Adi Katre, Mihir Bapat, Yash Parikh, Anvay Vahia, Yash Patil</p>
+       </div>
+     </div>
+
+
+   <!-- Toolchain Trail -->
+   <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSA" data-year="2026-2027">
+       <a href="{% post_url capstone/2026-08-28-toolchain-trail %}">
+         <img src="{{ '/images/' | append: site.data.toolchain-trail-capstone.Logo | relative_url }}" alt="{{ site.data.toolchain-trail-capstone.Title }} logo" class="w-28 h-28 object-cover rounded" />
+       </a>
+       <div>
+         <h3 class="text-lg font-semibold"><a href="{% post_url capstone/2026-08-28-toolchain-trail %}">Toolchain Trail</a></h3>
+         <p class="text-sm text-gray-700">{{ site.data.toolchain-trail-capstone.Overview }}</p>
        </div>
    </div>
 
@@ -605,6 +668,18 @@ Below are the capstone infographic pages created by student groups. Click an ima
            <p class="text-xs text-gray-500 mt-2">Team: Lilian Wu, Anika Marathe, Jaynee Chauhan</p>
         </div>
     </div>
+
+   <!-- Integra (CSP 26-27) -->
+   <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSP" data-year="2026-2027">
+       <a href="{% post_url 2026-03-04-sentri-capstone %}">
+           <img src="/images/capstone/sentri.png" alt="Sentri" class="w-28 h-28 object-cover rounded" />
+       </a>
+       <div>
+           <h3 class="text-lg font-semibold"><a href="{% post_url 2026-03-04-sentri-capstone %}">Integra</a></h3>
+           <p class="text-sm text-gray-700">An AI-driven recovery ecosystem for the Poway Recovery Center that provides users with access to specialized support programs and meeting schedules at the center while also tracking long-term sobriety milestones through a secure, high-fidelity user profile/dashboard.</p>
+           <p class="text-xs text-gray-500 mt-2">Team: Adya Shipekar, Anika Seksaria, Jailene Tang</p>
+       </div>
+   </div>
    
    <!-- Friends of the Poway Library  (CSP) -->
    <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSP">
@@ -702,20 +777,8 @@ Below are the capstone infographic pages created by student groups. Click an ima
        </div>
    </div>
 
-   <!-- SRFSC Website Redesign Examples (CSP) -->
-   <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSP" data-year="2026-2027">
-       <a href="{% post_url capstone/2026-09-04-srfsc-redesign-examples %}">
-           <div class="w-28 h-28 flex items-center justify-center rounded text-xl font-black text-white shadow-sm" style="background: linear-gradient(135deg, #173b2f, #d8572a);">SRFSC</div>
-       </a>
-       <div>
-           <h3 class="text-lg font-semibold"><a href="{% post_url capstone/2026-09-04-srfsc-redesign-examples %}">SRFSC Website Redesign Examples</a></h3>
-           <p class="text-sm text-gray-700">Visual mockup examples showing how the Scripps Ranch Fire Safe Council website could be redesigned for clarity, urgency, and action.</p>
-           <p class="text-xs text-gray-500 mt-2">Team: Krish Kelageri, Jasan Boprai, Shourya Patel</p>
-       </div>
-   </div>
-
    <!-- OCS Assignment Tracker (CSA) -->
-   <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSA">
+  <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSA" data-year="2026-2027">
        <a href="{% post_url capstone/2026-09-03-chuds-capstone %}">
            <img src="/images/backendboyzgcpiccc.png" alt="Backend Boyz - OCS Assignment Tracker" class="w-28 h-28 object-cover rounded" />
        </a>
@@ -727,7 +790,7 @@ Below are the capstone infographic pages created by student groups. Click an ima
    </div>
 
    <!-- OCS Security (CSA) -->
-   <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSA">
+  <div class="flex items-start space-x-4 p-4 border rounded-lg capstone-item CSA" data-year="2026-2027">
        <a href="{% post_url capstone/2026-09-03-cccs-security %}">
            <img src="/images/capstone/cccs-security-logo.png" alt="CCCS Security" class="w-28 h-28 object-cover rounded" />
        </a>
