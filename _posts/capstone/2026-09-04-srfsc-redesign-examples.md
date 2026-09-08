@@ -490,10 +490,11 @@ courses: { csp: {week: 25} }
     margin: 2.5rem auto 0;
     padding: 0 2rem 2rem;
     font-family: Arial, sans-serif;
+    color: #14213d !important;
   }
 
   .srfsc-pitch-hero {
-    background: linear-gradient(135deg, #173b2f 0%, #214b3c 100%);
+    background: linear-gradient(135deg, #173b2f 0%, #214b3c 100%) !important;
     border-radius: 24px;
     padding: 2rem 1.5rem;
     text-align: center;
@@ -507,8 +508,8 @@ courses: { csp: {week: 25} }
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-weight: 800;
-    color: #e9f3d7;
-    background: rgba(255,255,255,0.08);
+    color: #e9f3d7 !important;
+    background: rgba(255,255,255,0.08) !important;
     border: 1px solid rgba(255,255,255,0.14);
     border-radius: 999px;
     padding: 0.45rem 0.8rem;
@@ -520,14 +521,14 @@ courses: { csp: {week: 25} }
     font-size: clamp(2rem, 4vw, 3rem);
     line-height: 1.1;
     letter-spacing: -0.05em;
-    color: #f0c767;
+    color: #f0c767 !important;
   }
 
   .srfsc-pitch-hero p {
     max-width: 760px;
     margin: 0 auto;
     line-height: 1.7;
-    color: rgba(255,255,255,0.82);
+    color: #f8fbf4 !important;
     font-size: 1rem;
   }
 
@@ -539,7 +540,7 @@ courses: { csp: {week: 25} }
   }
 
   .srfsc-pitch-card {
-    background: #f8faf7;
+    background: #f8faf7 !important;
     border: 1px solid rgba(17, 38, 27, 0.08);
     border-radius: 18px;
     padding: 1.25rem;
@@ -564,13 +565,13 @@ courses: { csp: {week: 25} }
   .srfsc-pitch-card h3 {
     margin: 0 0 0.7rem;
     font-size: 1.2rem;
-    color: #112420;
+    color: #112420 !important;
   }
 
   .srfsc-pitch-card p {
     margin: 0;
     line-height: 1.7;
-    color: #3c4b42;
+    color: #3c4b42 !important;
   }
 
   .srfsc-before-after {
@@ -587,12 +588,12 @@ courses: { csp: {week: 25} }
   }
 
   .srfsc-pitch-panel.before {
-    background: rgba(216, 87, 42, 0.06);
+    background: #fff3ee !important;
     border-color: rgba(216, 87, 42, 0.2);
   }
 
   .srfsc-pitch-panel.after {
-    background: rgba(106, 141, 109, 0.06);
+    background: #f1f7f2 !important;
     border-color: rgba(106, 141, 109, 0.2);
   }
 
@@ -615,8 +616,12 @@ courses: { csp: {week: 25} }
   .srfsc-pitch-panel ul {
     margin: 0;
     padding-left: 1.1rem;
-    color: #21342d;
+    color: #21342d !important;
     line-height: 1.65;
+  }
+
+  .srfsc-pitch-panel li {
+    color: #21342d !important;
   }
 
   @media (max-width: 900px) {
